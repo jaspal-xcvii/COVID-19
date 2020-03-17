@@ -1,5 +1,7 @@
 #Libraries
 import pandas as pd
+from pandas import DataFrame
+
 import matplotlib.pyplot as plt
 import numpy as np
 import os
@@ -7,13 +9,11 @@ import os.path
 import shutil
 import time
 
-
-#define the start time of the program
-start_time = time.time()
-
 #Name of program
 name = "Covid-19 analysis"
 
+#define the start time of the program
+start_time = time.time()
 
 #Code to read in the csv files obtained from John Hopkins University 
 current_directory = os.getcwd()
@@ -58,15 +58,23 @@ last_day = columns[-1]
 new_columns = location_name_columns + [last_day]
 
 #covid_19_confirmed.info() #Gives information about each column. e.g name, number of entries and type
-
 #covid_19_confirmed.sort_values(["Country/Region", "Province/State"], inplace=True)
-
 #covid_19_confirmed.fillna("NA", inplace=True)
 
-print(covid_19_confirmed.head(160)) #Prints data set as seen by Pandas
 
+#removes provinces, leaves only countries behind
+remove_provinces = covid_19_confirmed[pd.notna(covid_19_confirmed['Province/State'])].index #indexes provinces to remove
+covid_19_confirmed.drop(remove_provinces , inplace=True)
+covid_19_deaths.drop(remove_provinces , inplace=True)
+covid_19_recovered.drop(remove_provinces , inplace=True)
 
+covid_19_confirmed.drop(['Province/State'], inplace=True, axis=1)
+covid_19_deaths.drop(['Province/State'], inplace=True, axis=1)
+covid_19_recovered.drop(['Province/State'], inplace=True, axis=1)
+#df = DataFrame(covid_19_confirmed,columns=data_columns)
+#df.plot(x ='Year', y='Unemployment_Rate', kind = 'line')
 
+print(covid_19_confirmed)
 
 
 print(name + " execution time --- %s seconds ---" % (time.time() - start_time)) #execution time
