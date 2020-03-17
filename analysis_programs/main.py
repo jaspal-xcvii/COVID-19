@@ -39,8 +39,10 @@ covid_19_recovered = pd.read_csv(file_recovered)
 covid_19_deaths = pd.read_csv(file_deaths)
 
 
-
+#Make an array to hold all the headers
 columns = covid_19_confirmed.columns.tolist()
+
+#Used to seperate country/region information from the data
 location_columns = ['Province/State', 'Country/Region', 'Lat', 'Long']
 location_long_lat_columns = ['Lat', 'Long']
 location_name_cols = ['Country/Region', 'Province/State']
@@ -55,7 +57,7 @@ new_columns = location_name_cols + [last_day]
 
 #covid_19_confirmed.fillna("NA", inplace=True)
 
-print(covid_19_confirmed.head(450)) #Prints data set as seen by Pandas
+#print(covid_19_confirmed.head(60)) #Prints data set as seen by Pandas
 
 
 
