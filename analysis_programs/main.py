@@ -3,6 +3,10 @@ import pandas as pd
 import os
 import os.path
 import shutil
+import time
+
+start_time = time.time()
+name = "Covid-19 analysis"
 
 
 #Code to read in the csv files obtained from John Hopkins University 
@@ -42,7 +46,16 @@ data_cols = [c for c in columns if c not in location_columns]
 last_day = columns[-1]
 new_cols = location_name_cols + [last_day]
 
-# time_series_covid_19_confirmed.info()
-covid_19_confirmed.sort_values(["Country/Region", "Province/State"], inplace=True)
-# time_series_covid_19_confirmed.fillna("NA", inplace=True)
-covid_19_confirmed.head()
+#covid_19_confirmed.info() #Gives information about each column. e.g name, number of entries and type
+
+#covid_19_confirmed.sort_values(["Country/Region", "Province/State"], inplace=True)
+
+#covid_19_confirmed.fillna("NA", inplace=True)
+
+#covid_19_confirmed.head()
+
+
+
+
+
+print(name + " execution time --- %s seconds ---" % (time.time() - start_time)) #execution time
