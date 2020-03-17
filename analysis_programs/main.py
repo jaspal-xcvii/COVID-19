@@ -5,7 +5,10 @@ import os.path
 import shutil
 import time
 
+#define the start time of the program
 start_time = time.time()
+
+#Name of program
 name = "Covid-19 analysis"
 
 
@@ -30,21 +33,21 @@ if found == True:
 else:
     print("ERROR - files cannot be found")
 
-
-input_directory = "../csse_covid_19_data/csse_covid_19_time_series/"
-
+#reads in the csv from found directory locations
 covid_19_confirmed = pd.read_csv(file_confirmed)
 covid_19_recovered = pd.read_csv(file_recovered)
 covid_19_deaths = pd.read_csv(file_deaths)
+
+
 
 columns = covid_19_confirmed.columns.tolist()
 location_columns = ['Province/State', 'Country/Region', 'Lat', 'Long']
 location_long_lat_columns = ['Lat', 'Long']
 location_name_cols = ['Country/Region', 'Province/State']
 
-data_cols = [c for c in columns if c not in location_columns]
+data_columns = [title for title in columns if title not in location_columns]
 last_day = columns[-1]
-new_cols = location_name_cols + [last_day]
+new_columns = location_name_cols + [last_day]
 
 #covid_19_confirmed.info() #Gives information about each column. e.g name, number of entries and type
 
@@ -52,7 +55,7 @@ new_cols = location_name_cols + [last_day]
 
 #covid_19_confirmed.fillna("NA", inplace=True)
 
-#covid_19_confirmed.head()
+print(covid_19_confirmed.head(450)) #Prints data set as seen by Pandas
 
 
 
