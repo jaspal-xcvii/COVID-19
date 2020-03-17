@@ -68,9 +68,9 @@ covid_19_confirmed.drop(remove_provinces , inplace=True)
 covid_19_deaths.drop(remove_provinces , inplace=True)
 covid_19_recovered.drop(remove_provinces , inplace=True)
 
-covid_19_confirmed.drop(['Province/State'], inplace=True, axis=1)
-covid_19_deaths.drop(['Province/State'], inplace=True, axis=1)
-covid_19_recovered.drop(['Province/State'], inplace=True, axis=1)
+covid_19_confirmed.drop(['Province/State','Lat','Long'], inplace=True, axis=1)
+covid_19_deaths.drop(['Province/State','Lat','Long'], inplace=True, axis=1)
+covid_19_recovered.drop(['Province/State','Lat','Long'], inplace=True, axis=1)
 #df = DataFrame(covid_19_confirmed,columns=data_columns)
 #df.plot(x ='Year', y='Unemployment_Rate', kind = 'line')
 
