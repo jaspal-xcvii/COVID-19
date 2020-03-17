@@ -1,9 +1,12 @@
 #Libraries
 import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
 import os
 import os.path
 import shutil
 import time
+
 
 #define the start time of the program
 start_time = time.time()
@@ -39,17 +42,20 @@ covid_19_recovered = pd.read_csv(file_recovered)
 covid_19_deaths = pd.read_csv(file_deaths)
 
 
-#Make an array to hold all the headers
+#Make an array to hold all the headers. These should be the same in all 3 files, so just take 1.
 columns = covid_19_confirmed.columns.tolist()
 
 #Used to seperate country/region information from the data
 location_columns = ['Province/State', 'Country/Region', 'Lat', 'Long']
 location_long_lat_columns = ['Lat', 'Long']
-location_name_cols = ['Country/Region', 'Province/State']
+location_name_columns = ['Country/Region', 'Province/State']
 
+#Finds all the columnds with data
 data_columns = [title for title in columns if title not in location_columns]
+
+#Last day, one before last
 last_day = columns[-1]
-new_columns = location_name_cols + [last_day]
+new_columns = location_name_columns + [last_day]
 
 #covid_19_confirmed.info() #Gives information about each column. e.g name, number of entries and type
 
@@ -57,7 +63,7 @@ new_columns = location_name_cols + [last_day]
 
 #covid_19_confirmed.fillna("NA", inplace=True)
 
-#print(covid_19_confirmed.head(60)) #Prints data set as seen by Pandas
+print(covid_19_confirmed.head(160)) #Prints data set as seen by Pandas
 
 
 
